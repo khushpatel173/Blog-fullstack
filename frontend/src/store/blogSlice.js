@@ -9,7 +9,7 @@ const blogSlice = createSlice({
     initialState , 
     reducers : {
         add : (state , action)=>{
-            state.blogs.push(action.payload.blog);
+            state.blogs.push(action.payload);
         } , 
         update : (state , action) =>{
             //  action me we assume ki nayi vali blog mila he 

@@ -33,7 +33,9 @@ class AuthService {
 
     async logout(){
         try {
-             await axios.post("http://localhost:3000/logout");
+             await axios.post("http://localhost:3000/logout" , {
+                withCredentials : true
+             });
         } catch (error) {
             throw error
         }

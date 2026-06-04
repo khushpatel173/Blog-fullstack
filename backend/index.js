@@ -112,7 +112,8 @@ app.post("/getUser", (req, res) => {
 app.post("/logout" ,(req ,res)=>{
     req.logout((err)=>{
         console.log(err);
-    })
+    });
+    res.json({message : "Logged out"});
 })
 
 // db related
@@ -122,29 +123,29 @@ app.post("/add" , async(req ,res)=>{
     try {
     const blog = new Blog(req.body);
     const newBlog = await blog.save();
-    return newBlog;
+   res.json(newBlog)
     } catch (error) {
         throw error
     }
 })
 
-app.post("/:id" , async(req ,res)=>{
+app.post("/update" , async(req ,res)=>{
     try {
-         const {id} = req.params;
+         const {id} = req.body;
     const blog = await Blog.findByIdAndUpdate(id, {
         ...req.body
     })
-    return blog;
+    res.json(blog);
     } catch (error) {
         throw error
     }
 
 })
-app.delete("/:id" , async(req ,res)=>{
+app.delete("/delete" , async(req ,res)=>{
     try {
-    const {id} = req.params;
+    const {id} = req.body;
     const blog = await Blog.findByIdAndDelete(id);
-    return blog;
+    res.json(blog);
     } catch (error) {
         throw error
     }
@@ -154,8 +155,18 @@ app.delete("/:id" , async(req ,res)=>{
 app.post("/getPosts" , async(req ,res)=>{
     try {
     const posts = await Blog.find({});
-    return posts;  
+    res.json(posts);  
     } catch (error) {
         throw error
+    }
+})
+
+app.post('/findPost' , async(req, res)=>{
+    try {
+           const {id} = req.body;
+    const dbPost = await Blog.findById(id);
+    res.json(dbPost);
+    } catch (error) {
+        throw error;
     }
 })
