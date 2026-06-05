@@ -14,7 +14,7 @@ function RTE({label , control , name , defaultValue=''}) {
       name={name || 'content'}
       render={({field})=>(
         <Editor
-        apiKey='u3j9w7dwrh04rhlrwsr37ydz9g70ascfb3kbfi913r8vm15x'
+        apiKey={import.meta.env.VITE_EDITOR_API}
           initialValue={defaultValue}
         init={{
             initialValue: defaultValue,

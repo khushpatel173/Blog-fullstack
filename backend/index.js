@@ -6,6 +6,8 @@ import mongoose from 'mongoose';
 import cors from 'cors'
 import session from 'express-session';
 import { Blog } from './models/Blog.js';
+import dotenv from "dotenv";
+dotenv.config();
 const app=express();
 
 app.use(
@@ -41,7 +43,7 @@ passport.deserializeUser(User.deserializeUser());
 
 
 const PORT = 3000;
-const dbUrl = 'mongodb://127.0.0.1:27017/blog'
+const dbUrl = process.env.DB_URL;
 app.listen(PORT , ()=>{
     console.log("Server is listening to port 3000");
 });
