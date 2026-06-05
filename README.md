@@ -1,0 +1,1 @@
+This is a full stack blog application made with MERN stack i.e monogdb , express , react and nodeJs. Have made authentication , the authorisation part is still left will add it in a few days right now everyone can edit or delete blog there is no authorisation. Have used tinymce editor as an editor. Used redux toolkit.
